@@ -3,9 +3,9 @@
 import { Input } from '@/shared/ui/Input'
 import { useState } from 'react'
 import { Button } from '@/shared/ui/Button'
+import { GoogleButton } from '@/shared/ui/GoogleButton'
 
 import styles from "./Register.module.scss"
-import { GoogleButton } from '@/shared/ui/GoogleButton'
 
 export default function Register () {
 	const [inputEmail, setInputEmail] = useState<string>('')
