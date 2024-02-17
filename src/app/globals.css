@@ -5,10 +5,7 @@
 	outline: none;
 }
 
-/* html {
-	padding: 10px 15px;
-} */
-
 main {
-	min-height: 78.3vh;
+	position: relative;
+	min-height: 100%;
 }

@@ -4,9 +4,10 @@ interface IProps {
 	inputValue: string,
     setInputValue: (InputValue: string) => void,
 	placeholder?: string,
+	inputType: string,
 }
 
-export const Input = ({ placeholder, inputValue, setInputValue }: IProps) => {
+export const Input = ({ placeholder, inputValue, setInputValue, inputType }: IProps) => {
 	return (
 		<div>
 			<input 
@@ -14,7 +15,7 @@ export const Input = ({ placeholder, inputValue, setInputValue }: IProps) => {
 				placeholder={placeholder}
 				className={styles.Input}
 				value={inputValue}
-				type="text"
+				type={inputType}
 			/>
 		</div>
 	)

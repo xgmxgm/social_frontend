@@ -1,0 +1,22 @@
+.GoogleButton {
+	width: 100%;
+	color: rgb(55, 55, 55);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid black;
+	padding: 5px 20px;
+	border-radius: 5px;
+	font-size: 12pt;
+	font-weight: 600;
+	gap: 10px;
+	transition: 0.3s;
+
+	&:hover {
+		border-radius: 10px;
+		background: #f32d2d;
+		color: white;
+		transition: 0.3s;
+	}
+}

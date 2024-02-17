@@ -41,6 +41,6 @@ export const authConfig: AuthOptions = {
 		})
 	],
 	pages: {
-		signIn: "/auth"
+		signIn: "/register",
 	}
 }
