@@ -29,7 +29,7 @@ export const authConfig: AuthOptions = {
                     password: credentials.password
                 }
 
-				const res = await axios.post('/auth', requestData);
+				const res = await axios.post('/login/auth', requestData);
 				const user = res.data.userData;
 
 				if (user) {
@@ -41,6 +41,6 @@ export const authConfig: AuthOptions = {
 		})
 	],
 	pages: {
-		signIn: "/register",
+		signIn: "/auth",
 	}
 }
