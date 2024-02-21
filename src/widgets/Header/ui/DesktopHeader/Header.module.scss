@@ -1,0 +1,27 @@
+.Header {
+	// background: #a94848;
+	border: 1px solid black;
+
+	.Header__Content {
+		padding: 5px 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.Left__Content {
+
+			.TitleContent {
+				.Title {
+					text-decoration: none;
+					color: black;
+				}
+			}
+		}
+
+		.Right__Content {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+}

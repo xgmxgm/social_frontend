@@ -1,0 +1,16 @@
+.LinkButton {
+	margin: 0 10px;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: white;
+	background-color: rgb(241, 74, 74);
+	border-radius: 5px;
+	transition: 0.2s;
+
+	&:hover {
+		background-color: rgb(205, 62, 62);
+		transform: scale(0.90);
+		// box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgb(205, 62, 62);
+        transition: 0.2s;
+	}
+}

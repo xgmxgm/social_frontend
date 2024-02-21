@@ -1,0 +1,16 @@
+.ProfileHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.Links {
+
+	}
+
+	.Profile {
+		.Profile__Img {
+			border: 2px solid rgb(160, 88, 88);
+			border-radius: 100%;
+		}
+	}
+}
