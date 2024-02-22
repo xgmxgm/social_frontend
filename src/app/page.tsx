@@ -12,13 +12,7 @@ export default function Home() {
     <div>
       <h2>Main</h2>
       <div>
-        <Link href="/auth">Log In</Link>
-      </div>
-      <div>
         <Link href='#' onClick={() => signOut({ callbackUrl: "/auth" })}>Sign out</Link>
-      </div>
-      <div>
-        <Link href="/register">Sing In</Link>
       </div>
     </div>
   )

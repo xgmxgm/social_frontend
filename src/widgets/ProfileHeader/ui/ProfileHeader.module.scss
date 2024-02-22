@@ -8,8 +8,20 @@
 	}
 
 	.Profile {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+
+		.SignOut {
+			text-decoration: none;
+			color: black;
+			border: 2px solid black;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+
 		.Profile__Img {
-			border: 2px solid rgb(160, 88, 88);
+			border: 2px solid black;
 			border-radius: 100%;
 		}
 	}
