@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import axios from "@/axios"
+import { IUser } from '@/types/user'
 
 export const authConfig: AuthOptions = {
 	providers: [
@@ -30,10 +31,21 @@ export const authConfig: AuthOptions = {
                 }
 
 				const res = await axios.post('/login/auth', requestData);
-				const user = res.data.userData;
+				const user: IUser = res.data.userData;
+
+				console.log("auth.ts(log): ",user);
+
+				const newUser = {
+					name: user.firstName + " " + user.lastName,
+					email: user.email,
+					image: user.avatarURL,
+				}
+
+				console.log("new user data: ", newUser)
 
 				if (user) {
-                    return user
+                    // return user
+                    return newUser
                 } else {
                     throw new Error(res.data.message)
                 }

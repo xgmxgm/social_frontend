@@ -3,13 +3,18 @@
 import { GoogleButton } from '@/shared/ui/GoogleButton'
 import { Input } from '@/shared/ui/Input'
 import { FormEventHandler, useState } from 'react'
+import axios from '@/axios'
 
 import styles from './Auth.module.scss'
 import { Button } from '@/shared/ui/Button'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function Auth () {
 	const [inputEmail, setInputEmail] = useState<string>('');
 	const [inputPassword, setInputPassword] = useState<string>('');
+
+	const router = useRouter();
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
@@ -19,6 +24,20 @@ export default function Auth () {
 		const reqData = {
 			email: formData.get("email"),
 			password: formData.get("password"),
+		}
+
+		const res = await axios.post('/login/auth', reqData)
+
+		const responce = await signIn('credentials', {
+			email: formData.get("email"),
+			password: formData.get("password"),
+			redirect: false,
+		})
+
+		if (responce && !responce.error) {
+			router.push("/profile")
+		} else {
+			console.log(res)
 		}
 	}
 

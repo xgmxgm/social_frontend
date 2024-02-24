@@ -5,9 +5,13 @@ import { authConfig } from '@/configs/auth';
 export default async function Profile () {
 	const session = await getServerSession(authConfig);
 
+	console.log(session)
+	console.log(session?.user)
+
 	return (
 		<div className={styles.Profile}>
 			<h2>Profile: {session?.user?.name}</h2>
+			<h2>Profile: {session?.user?.email}</h2>
 		</div>
 	)
 }
