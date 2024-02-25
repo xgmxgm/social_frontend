@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import { LinkButton } from '@/shared/ui/LinkButton'
 import { useSession, signOut } from "next-auth/react"
+import Link from 'next/link'
 
 import styles from './ProfileHeader.module.scss'
-import Link from 'next/link'
-import { getServerSession } from 'next-auth'
-import { authConfig } from '@/configs/auth'
 
 export const ProfileHeader = () => {
 	const session = useSession();

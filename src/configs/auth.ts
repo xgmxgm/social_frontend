@@ -33,15 +33,11 @@ export const authConfig: AuthOptions = {
 				const res = await axios.post('/login/auth', requestData);
 				const user: IUser = res.data.userData;
 
-				console.log("auth.ts(log): ",user);
-
 				const newUser = {
 					name: user.firstName + " " + user.lastName,
 					email: user.email,
 					image: user.avatarURL,
 				}
-
-				console.log("new user data: ", newUser)
 
 				if (user) {
                     // return user

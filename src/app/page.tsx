@@ -1,12 +1,9 @@
 'use client'
 
-import { useSession, signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
 export default function Home() {
-  const session = useSession();
-
-  console.log(session)
 
   return (
     <div>

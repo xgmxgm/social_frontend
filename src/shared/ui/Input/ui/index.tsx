@@ -18,6 +18,7 @@ export const Input = ({ placeholder, inputValue, setInputValue, inputType, name 
 				value={inputValue}
 				type={inputType}
 				name={name}
+				required
 			/>
 		</div>
 	)
