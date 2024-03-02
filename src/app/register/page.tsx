@@ -3,7 +3,7 @@
 import { FormEventHandler, useEffect, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from "next/navigation"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 import { Input } from '@/shared/ui/Input'
 import { Button } from '@/shared/ui/Button'
@@ -12,6 +12,7 @@ import axios from '@/axios'
 
 import styles from "./Register.module.scss"
 import { ShowButton } from '@/shared/ui/ShowButton'
+import { Loading } from '@/shared/ui/Loading'
 
 export default function Register () {
 	const [inputEmail, setInputEmail] = useState<string>('')
@@ -23,6 +24,7 @@ export default function Register () {
 
 	const [showButton, setShowButton] = useState<boolean>(false);
 	const [showButtonRepeat, setShowButtonRepeat] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(false);
 
 	const router = useRouter();
 
@@ -38,8 +40,10 @@ export default function Register () {
 		const formData = new FormData(event.currentTarget);
 
 		if (formData.get("password") != formData.get("repeatPassword")) {
-			setMessage("password not repeat")
+			setMessage("Password mismatch")
 		} else {
+			setLoading(true)
+
 			const reqData = {
 				email: formData.get("email"),
 				firstName: formData.get("firstName"),
@@ -48,7 +52,12 @@ export default function Register () {
 				repeatPassword: formData.get("repeatPassword"),
 			};
 	
-			const res = await axios.post("/register/create", reqData);
+			const res = await axios.post("/register/create", reqData)
+			.catch((err)=> {
+				setLoading(false)
+				setMessage(err.response.data.message[0])
+				return err
+			})
 
 			if (res.data.userData) {
 				const responce = await signIn('credentials', {
@@ -56,12 +65,15 @@ export default function Register () {
 					password: formData.get('password'),
 					redirect: false,
 				})
+				.finally(() => {
+					setLoading(false)
+				})
 
 				if (responce && !responce.error) {
 					router.push('/profile');
 				}
 			} else {
-				console.log(res)
+				setLoading(false)
 				setMessage(res.data.message)
 			}
 		}
@@ -75,24 +87,33 @@ export default function Register () {
         visible: {
             y: 0,
             opacity: 1
-        }
+        },
+		exit: {
+			y: -100,
+			opacity: 0
+		}
     }
 
 	return (
 		<div className={styles.Register}>
+			<Loading loading={loading} />
 			<div className={styles.Register__Title}>
 				<h2>Sign In</h2>
 			</div>
-			{ message ? 
+			<AnimatePresence>
+				{message && (
 				<motion.div
-					initial='hidden'
-					whileInView='visible'
 					variants={pVariants}
-					transition={{duration: 0.3}}
-					className={styles.Message}>
+					initial="hidden"
+					animate="visible"
+					exit="exit"
+					transition={{ duration: 0.3 }}
+					className={styles.Message}
+				>
 					{message}
 				</motion.div>
-			: <></>}
+				)}
+			</AnimatePresence>
 			<div className={styles.Register__Form}>
 				<form onSubmit={handleSubmit}>
 					<Input name='email' inputValue={inputEmail} setInputValue={setInputEmail} placeholder='Email' inputType='email' />

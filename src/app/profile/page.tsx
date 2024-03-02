@@ -7,8 +7,8 @@ export default async function Profile () {
 
 	return (
 		<div className={styles.Profile}>
-			<h2>Profile: {session?.user?.name}</h2>
-			<h2>Profile: {session?.user?.email}</h2>
+			<h2>Name: {session?.user?.name}</h2>
+			<h2>Email: {session?.user?.email}</h2>
 		</div>
 	)
 }

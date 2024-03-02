@@ -36,6 +36,11 @@
 	}
 
 	.Message {
+		position: absolute;
+		background: #fff;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 10px 10px;
 		margin: 10px 0;
 		color: red;
 	}
