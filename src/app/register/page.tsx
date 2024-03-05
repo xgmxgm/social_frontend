@@ -13,6 +13,7 @@ import axios from '@/axios'
 import styles from "./Register.module.scss"
 import { ShowButton } from '@/shared/ui/ShowButton'
 import { Loading } from '@/shared/ui/Loading'
+import Link from 'next/link'
 
 export default function Register () {
 	const [inputEmail, setInputEmail] = useState<string>('')
@@ -128,6 +129,7 @@ export default function Register () {
 						<ShowButton showPass={showButtonRepeat} setShowPass={setShowButtonRepeat} />
 					</div>
 					<Button>Sign In</Button>
+					<Link className={styles.Link} href='/auth'>already have an account?</Link>
 				</form>
 				<div className={styles.Border}>
 					<div className={styles.Line}></div>

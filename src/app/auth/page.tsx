@@ -12,6 +12,7 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { ShowButton } from '@/shared/ui/ShowButton'
 import { Loading } from '@/shared/ui/Loading'
+import Link from 'next/link'
 
 export default function Auth () {
 	const [inputEmail, setInputEmail] = useState<string>('');
@@ -105,6 +106,7 @@ export default function Auth () {
 						<ShowButton showPass={showButton} setShowPass={setShowButton} />
 					</div>
 					<Button>Log In</Button>
+					<Link className={styles.Link} href='/register'>Don't have an account?</Link>
 				</form>
 				<div className={styles.Border}>
 					<div className={styles.Line}></div>

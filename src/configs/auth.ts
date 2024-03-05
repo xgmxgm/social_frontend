@@ -20,28 +20,22 @@ export const authConfig: AuthOptions = {
 				email: { label: 'email', type: 'email', required: true },
                 password: { label: 'password', type: 'password', required: true }
 			},
-			async authorize(credentials) {
-				if (!credentials?.email || !credentials.password){
-                    throw new Error("An email address and password are required.")
-                }
-
+			async authorize(credentials): Promise<any> {
 				const requestData = {
-                    email: credentials.email,
-                    password: credentials.password
+                    email: credentials!.email,
+                    password: credentials!.password
                 }
 
 				const res = await axios.post('/login/auth', requestData);
 				const user: IUser = res.data.userData;
 
-				const newUser = {
-					name: user.firstName + " " + user.lastName,
-					email: user.email,
-					image: user.avatarURL,
-				}
-
 				if (user) {
-                    // return user
-                    return newUser
+					return {
+						id: user.id,
+						name: user.firstName + " " + user.lastName,
+						email: user.email,
+						image: user.avatarURL,
+					}
                 } else {
                     throw new Error(res.data.message)
                 }
@@ -50,5 +44,5 @@ export const authConfig: AuthOptions = {
 	],
 	pages: {
 		signIn: "/auth",
-	}
+	},
 }

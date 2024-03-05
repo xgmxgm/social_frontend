@@ -35,6 +35,16 @@
 		}
 	}
 
+	.Link {
+		color: black;
+		text-decoration: none;
+
+		&:hover {
+			color: red;
+			text-decoration: underline;
+		}
+	}
+
 	.Message {
 		position: absolute;
 		background: #fff;
