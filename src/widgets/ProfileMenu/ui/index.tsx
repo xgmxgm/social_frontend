@@ -9,8 +9,14 @@ interface IProps {
 }
 
 export const ProfileMenu = ({ modalActive, setModalActive, children }: IProps) => {
+	const modalhandler = (e: react.FormEvent<HTMLInputElement>) => {
+		setModalActive(false)
+		e.preventDefault()
+	}
+
 	return (
-		<div onClick={() => setModalActive(false)} className={styles.ProfileMenu} style={{ display: modalActive ? "block" : "none" }}>
+		// <div onClick={() => setModalActive(false)} className={styles.ProfileMenu} style={{ display: modalActive ? "block" : "none" }}>
+		<div onClick={() => modalhandler} className={styles.ProfileMenu} style={{ display: modalActive ? "block" : "none" }}>
 			{ children }
 		</div>
 	)
