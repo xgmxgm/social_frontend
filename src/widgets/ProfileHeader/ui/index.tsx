@@ -49,7 +49,7 @@ export const ProfileHeader = () => {
 									</li>
 								)}
 								<li className={styles.li}><Image src='/img/sign_out2_icon.svg' width={20} height={20} alt='' /><Link className={styles.Link} href='#' onClick={() => signOut({ callbackUrl: "/auth" })}>Sign out</Link></li>
-							</ul>
+							</ul> 
 						</ProfileMenu>
 				</div>
 			}
