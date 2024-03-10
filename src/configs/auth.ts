@@ -1,4 +1,4 @@
-import type { AuthOptions } from "next-auth";
+import type { AuthOptions, User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
@@ -31,7 +31,6 @@ export const authConfig: AuthOptions = {
 
 				if (user) {
 					return {
-						id: user.id,
 						name: user.firstName + " " + user.lastName,
 						email: user.email,
 						image: user.avatarURL,
@@ -42,6 +41,12 @@ export const authConfig: AuthOptions = {
 			}
 		})
 	],
+	// callbacks: {
+	// 	session({ session, user }) {
+	// 		session.user.id = user.id;
+	// 		return session;
+	// 	}
+	// },
 	pages: {
 		signIn: "/auth",
 	},

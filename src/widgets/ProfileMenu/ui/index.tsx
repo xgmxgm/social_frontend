@@ -10,7 +10,7 @@ interface IProps {
 
 export const ProfileMenu = ({ modalActive, setModalActive, children }: IProps) => {
 	const modalhandler = (e: react.FormEvent<HTMLInputElement>) => {
-		setModalActive(false)
+		setModalActive(false) 
 		e.preventDefault()
 	}
 
