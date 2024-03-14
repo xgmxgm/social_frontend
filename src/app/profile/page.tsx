@@ -6,6 +6,7 @@ import styles from "./Profile.module.scss";
 
 export default async function Profile () {
 	const session = await getServerSession(authConfig);
+
 	console.log("/profile: ",session)
 
 	return (
